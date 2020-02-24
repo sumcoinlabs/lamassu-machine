@@ -2,6 +2,7 @@ import test from 'ava'
 import sinon from 'sinon'
 import {parseUrl as parseBTCAddress} from '../../lib/coins/btc'
 import {parseUrl as parseLTCAddress} from '../../lib/coins/ltc'
+import {parseUrl as parseSUMAddress} from '../../lib/coins/sum'
 import {parseUrl as parseDASHAddress} from '../../lib/coins/dash'
 import {parseUrl as parseZECAddress} from '../../lib/coins/zec'
 
@@ -29,6 +30,21 @@ test('Should parse LTC address', t => {
 test('Should throw for invalid LTC address', t => {
   const addr = 'LVddgVL4e4mTeAdywWqmwWkJypAGcRkHd3'
   let spy = sinon.spy(parseLTCAddress)
+  try {
+    spy('main', addr)
+  } catch (error) { }
+  t.true(spy.threw())
+})
+
+test('Should parse SUM address', t => {
+  const addr = 'SVUuDZ3xWCADZv169JbnY6BBaxgWH63Rwx'
+  const parsed = parseSUMAddress('main', addr)
+  t.is(parsed, addr)
+})
+
+test('Should throw for invalid SUM address', t => {
+  const addr = 'SYEDNr33Tt5Hbnh6ZjyrDDxyQC5hqhZTUk'
+  let spy = sinon.spy(parseSUMAddress)
   try {
     spy('main', addr)
   } catch (error) { }
