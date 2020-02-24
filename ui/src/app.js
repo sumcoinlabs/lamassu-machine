@@ -47,6 +47,11 @@ var coins = {
     displayScale: 5,
     displayCode: 'mLTC'
   },
+  SUM: {
+    unitScale: 8,
+    displayScale: 5,
+    displayCode: 'mSUM'
+  },
   DASH: {
     unitScale: 8,
     displayScale: 5,
